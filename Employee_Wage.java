@@ -38,14 +38,27 @@ public class Employee_Wage {
 		int dailyWage2;
 
 		dailyWage1 = full_Day_Hour * wage_Per_Hour;
-		System.out.println("Calculate Daily Employee Wage : ");
-		System.out.println("Employee is Full Time");
-		System.out.println("Daily wage of Employee is " + dailyWage1 + " Rs ");
-		System.out.println();
-
 		dailyWage2 = part_Time_Hour * wage_Per_Hour;
-		System.out.println("Employee is Part Time");
-		System.out.println("Daily wage of Employee is " + dailyWage2 + " Rs ");
-		System.out.println();
+
+		System.out.println("Calculate Daily Employee Wage : ");
+
+		Random inp = new Random();
+		isPresent = inp.nextInt(3);
+		switch (isPresent) {
+		case 0:
+			System.out.println("Employee is Full Time");
+			System.out.println("Daily wage of Employee is " + dailyWage1 + " Rs ");
+			break;
+
+		case 1:
+			System.out.println("Employee is Part Time");
+			System.out.println("Daily wage of Employee is " + dailyWage2 + " Rs ");
+			break;
+
+		case 2:
+			System.out.println("Employee is Absent");
+			break;
+		}
 	}
+
 }
