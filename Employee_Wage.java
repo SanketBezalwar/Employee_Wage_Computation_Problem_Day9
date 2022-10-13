@@ -8,31 +8,6 @@ public class Employee_Wage {
 	static int full_Day_Hour = 8;
 	static int part_Time_Hour = 4;
 
-	public static void main(String[] args) {
-		System.out.println("Welcome to Employee Wage Computation");
-		System.out.println();
-
-		Employee_Wage emp = new Employee_Wage();
-
-		emp.employeeAttendance();
-		emp.dailyEmployeeWage();
-		emp.wageDaysHours();
-
-	}
-
-	// employee attendance check
-	public void employeeAttendance() {
-		Random inp = new Random();
-		isPresent = inp.nextInt(2);
-
-		System.out.println("Attendance : ");
-		if (isPresent == 0)
-			System.out.println("Employee is Present");
-		else
-			System.out.println("Employee is Absent");
-		System.out.println();
-	}
-
 	// calculate employee wage
 	public void dailyEmployeeWage() {
 		int dailyWage1;
@@ -74,29 +49,40 @@ public class Employee_Wage {
 	public void wageDaysHours() {
 		int isWorking;
 		int totalWage = 0;
-		int maxWordDays = 0;
+		int maxWorkDays = 0;
 		int maxWorkHours = 0;
 
-		while (maxWorkHours <= 100 && maxWordDays <= 20) {
+		while (maxWorkHours <= 100 && maxWorkDays <= 20) {
 
 			Random inp = new Random();
 			isWorking = inp.nextInt(2);
-			maxWordDays = maxWordDays + 1;
+			maxWorkDays += 1;
 
 			switch (isWorking) {
 			case 0:
-				totalWage = totalWage + wage_Per_Hour * 4;
-				maxWorkHours = maxWorkHours + 4;
+				totalWage += wage_Per_Hour * 4;
+				maxWorkHours += 4;
 				break;
 
 			case 1:
-				totalWage = totalWage + wage_Per_Hour * 8;
-				maxWorkHours = maxWorkHours + 8;
+				totalWage += wage_Per_Hour * 8;
+				maxWorkHours += 8;
 				break;
 			}
 		}
 
 		System.out.println("Employee Wage for Total Working Hours is " + totalWage);
+
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Welcome to Employee Wage Computation");
+		System.out.println();
+
+		Employee_Wage emp = new Employee_Wage();
+
+		emp.dailyEmployeeWage();
+		emp.wageDaysHours();
 
 	}
 
