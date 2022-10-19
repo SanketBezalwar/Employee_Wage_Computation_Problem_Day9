@@ -3,11 +3,12 @@ package Employee_Wage_Computation;
 import java.util.Random;
 
 public class Employee_Wage {
+
 	public static int isPresent;
 	public static int wage_Per_Hour = 20;
 	public static int full_Day_Hour = 8;
 	public static int part_Time_Hour = 4;
-	public static final int isFullTime = 2;
+	public static final int isFullTime = 0;
 	public static final int isPartTime = 1;
 
 	// employee attendance check
@@ -39,9 +40,11 @@ public class Employee_Wage {
 		monthlyWage2 = dailyWage2 * workDays;
 
 		System.out.println("Calculate Employee Wage : ");
+		System.out.println();
 
 		Random inp = new Random();
 		isPresent = inp.nextInt(3);
+
 		switch (isPresent) {
 		case 0:
 			System.out.println("Employee is Full Time");
@@ -59,6 +62,7 @@ public class Employee_Wage {
 			System.out.println("Employee is Absent");
 			break;
 		}
+
 	}
 
 	// wages till hours or days is reached
@@ -86,6 +90,7 @@ public class Employee_Wage {
 				maxWorkHours += 8;
 				break;
 			}
+
 		}
 
 		System.out.println("Employee Wage for Total Working Hours is " + totalWage);
@@ -109,9 +114,11 @@ public class Employee_Wage {
 			case isFullTime:
 				employeeHours = 8;
 				break;
+
 			case isPartTime:
 				employeeHours = 4;
 				break;
+
 			default:
 				employeeHours = 0;
 			}
@@ -128,6 +135,7 @@ public class Employee_Wage {
 		System.out.println();
 
 		return totalEmployeeWage;
+
 	}
 
 	public static void main(String[] args) {
@@ -149,4 +157,5 @@ public class Employee_Wage {
 		calculateEmployeeWage("Lenskart", 20, 14, 24);
 
 	}
+
 }
