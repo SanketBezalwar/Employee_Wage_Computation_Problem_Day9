@@ -3,10 +3,12 @@ package Employee_Wage_Computation;
 import java.util.Random;
 
 public class Employee_Wage {
-	static int isPresent;
-	static int wage_Per_Hour = 20;
-	static int full_Day_Hour = 8;
-	static int part_Time_Hour = 8;
+	public static int isPresent;
+	public static int wage_Per_Hour = 20;
+	public static int full_Day_Hour = 8;
+	public static int part_Time_Hour = 4;
+	public static final int isFullTime = 2;
+	public static final int isPartTime = 1;
 
 	// employee attendance check
 	public void employeeAttendance() {
@@ -67,6 +69,7 @@ public class Employee_Wage {
 		int maxWorkHours = 0;
 
 		while (maxWorkHours <= 100 && maxWorkDays <= 20) {
+			maxWorkDays++;
 
 			Random inp = new Random();
 			isWorking = inp.nextInt(2);
@@ -86,10 +89,49 @@ public class Employee_Wage {
 		}
 
 		System.out.println("Employee Wage for Total Working Hours is " + totalWage);
+		System.out.println();
 
 	}
 
+	// wages of multiple companies
+	public static int calculateEmployeeWage(String companyName, int employeeRatePerHour, int numOfWorkingDays,
+			int maxHoursInMonth) {
+
+		int employeeHours = 0, totalEmployeeHours = 0, totalWorkingDays = 0;
+
+		while (totalEmployeeHours <= maxHoursInMonth && totalWorkingDays < numOfWorkingDays) {
+			totalWorkingDays++;
+
+			Random inp = new Random();
+			isPresent = inp.nextInt(3);
+
+			switch (isPresent) {
+			case isFullTime:
+				employeeHours = 8;
+				break;
+			case isPartTime:
+				employeeHours = 4;
+				break;
+			default:
+				employeeHours = 0;
+			}
+
+			totalEmployeeHours += employeeHours;
+
+			System.out.println("Day " + totalWorkingDays + " Working Hours : " + employeeHours);
+		}
+
+		int totalEmployeeWage = totalEmployeeHours * employeeRatePerHour;
+
+		System.out.println();
+		System.out.println("Total Employee Wage for " + companyName + " is : " + totalEmployeeWage);
+		System.out.println();
+
+		return totalEmployeeWage;
+	}
+
 	public static void main(String[] args) {
+
 		System.out.println("Welcome to Employee Wage Computation");
 		System.out.println();
 
@@ -98,6 +140,13 @@ public class Employee_Wage {
 		emp.employeeAttendance();
 		emp.dailyEmployeeWage();
 		emp.wageDaysHours();
+
+		System.out.println("Calculate Total Employee Wage For Multiple Companies");
+		System.out.println();
+
+		calculateEmployeeWage("Jio Mart", 10, 6, 16);
+		calculateEmployeeWage("Zudio", 15, 10, 20);
+		calculateEmployeeWage("Lenskart", 20, 14, 24);
 
 	}
 }
