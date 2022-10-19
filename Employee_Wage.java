@@ -6,7 +6,21 @@ public class Employee_Wage {
 	static int isPresent;
 	static int wage_Per_Hour = 20;
 	static int full_Day_Hour = 8;
-	static int part_Time_Hour = 4;
+	static int part_Time_Hour = 8;
+
+	// employee attendance check
+	public void employeeAttendance() {
+
+		Random inp = new Random();
+		isPresent = inp.nextInt(2);
+
+		System.out.println("Attendance : ");
+		if (isPresent == 0)
+			System.out.println("Employee is Present");
+		else
+			System.out.println("Employee is Absent");
+		System.out.println();
+	}
 
 	// calculate employee wage
 	public void dailyEmployeeWage() {
@@ -56,7 +70,7 @@ public class Employee_Wage {
 
 			Random inp = new Random();
 			isWorking = inp.nextInt(2);
-			maxWorkDays += 1;
+			maxWorkDays++;
 
 			switch (isWorking) {
 			case 0:
@@ -81,9 +95,9 @@ public class Employee_Wage {
 
 		Employee_Wage emp = new Employee_Wage();
 
+		emp.employeeAttendance();
 		emp.dailyEmployeeWage();
 		emp.wageDaysHours();
 
 	}
-
 }
